@@ -1,0 +1,25 @@
+<div
+    ref="root"
+    class="dropdown"
+    :class="{ dropup: top }"
+    @mouseleave="mouseLeave"
+    @mouseover="mouseOver"
+    @mouseenter="mouseEnter"
+    @click="toggleMenu"
+>
+    <slot></slot>
+    <transition :name="transition">
+        <div
+            v-show="value"
+            class="dropdown-menu show"
+            :class="{ 'dropdown-menu-right': right}"
+            :style="styles"
+            @mouseleave="startTimer"
+            @mouseenter="stopTimer"
+            @click.stop
+            ref="dropdown"
+        >
+        <slot name="dropdown"></slot>
+        </div>
+    </transition>
+</div>
