@@ -1,0 +1,27 @@
+<label
+    :class="className"
+    tabindex="0"
+    role="checkbox"
+    @keydown.space.prevent="keyToggle"
+>
+    <input
+        type="checkbox"
+        class="v-switch-input"
+        :name="name"
+        :checked="modelValue"
+        :disabled="disabled"
+        tabindex="-1"
+        @change.stop="toggle"
+    />
+    <div class="v-switch-core" :style="coreStyle">
+        <div class="v-switch-button" :style="buttonStyle" />
+    </div>
+    <template v-if="labels">
+        <span class="v-switch-label v-left" :style="labelStyle" v-if="toggled">
+            <slot name="checked">{{ labelChecked }}</slot>
+        </span>
+        <span class="v-switch-label v-right" :style="labelStyle" v-else>
+            <slot name="unchecked">{{ labelUnchecked }}</slot>
+        </span>
+    </template>
+</label>
